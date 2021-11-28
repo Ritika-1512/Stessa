@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Calculator" icon-name="standard:trailhead">
+        <lightning-input name="First" label="First Number" type="integer" onchange = {handleNum1}></lightning-input>
+        <lightning-input name="second" label="Second Number" type="integer" onchange={handleNum2}></lightning-input>
+    <lightning-button label="Sum" onclick={doSum}></lightning-button>
+    <lightning-button label="Subtract" onclick={doSub}></lightning-button>
+    <lightning-button label="Division" onclick={doDiv}></lightning-button>
+    <lightning-button label="Multiply" onclick={doMul}></lightning-button>
+    <lightning-button label="Clear" onclick={doclr}></lightning-button>
+    <lightning-input name="result" label="Result" type="integer" value={result}></lightning-input>
+    </lightning-card>
+</template>

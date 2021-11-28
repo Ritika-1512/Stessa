@@ -1,0 +1,23 @@
+<template>
+    <div class="myColor">
+    <lightning-card title="Quiz App" icon-name="bookmark_alt">
+        <h1>1.Question</h1><br/>
+        <div>
+            <p class = "quiz">What number of solution records can be imported via import wizard?</p>
+          <lightning-radio-group name="radioButton1" options={option1} value={value1} type="radio"></lightning-radio-group>
+        </div>
+        <h1>2.Question</h1><br/>
+        <div>
+            <p class = "quiz">While designing Customizable Forecasting, you can set which of the accompanying Forecast Dates for figuring out which openings add to the gauge?</p>
+            <lightning-radio-group name="radioButton2" options={option2} value={value2} type="radio"></lightning-radio-group>
+        </div>
+    </lightning-card>
+    <lightning-card>
+        <lightning-button-group>
+            <lightning-button label="Save" name={save}></lightning-button>
+            <lightning-button label="Cancel" name={cancel}></lightning-button>
+        </lightning-button-group>
+        <!--<lightning-input type="integer" onkeyup={onChangeHandler}></lightning-input>-->
+    </lightning-card>
+</div>
+</template>

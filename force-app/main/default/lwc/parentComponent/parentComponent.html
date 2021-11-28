@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Parent" icon-name="diamond">
+        <lightning-input type="number" onkeyup={onChangeHandler}></lightning-input>
+        <div class="dynamic" style={percentage}>
+           <!-- <h1>This is My Parent Component</h1>-->
+        </div>
+        
+    </lightning-card>
+
+    <lightning-card title="Query Selector" icon-name="adjust_value">
+    <div>
+        <h1>This is User List</h1>
+        <template for:each={users} for:item="user">
+            <div class="username" key={user}>{user}</div>
+        </template>
+<lightning-button label="New" onclick={clickHandler} slot="actions"></lightning-button>
+</div>
+</lightning-card>
+<!--<c-child-component></c-child-component>-->
+</template>

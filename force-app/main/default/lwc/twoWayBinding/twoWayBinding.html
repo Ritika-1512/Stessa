@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Two Way Data Binding" icon-name="doctype:image">
+        <div class="slds-p-horizontal_small" >
+            <lightning-input label="Enter Your Name" name="fullName" value={fullName} onkeyup={changeHandler}></lightning-input>
+        </div>
+        <div class="slds-p-horizontal_small" >
+            <lightning-input label="Enter Technology" name="technology" value={technology} onkeyup={changeHandler}></lightning-input>
+        </div>
+        <div class="slds-p-around_medium">
+            <h2>My Name is {fullName} and I'm a {technology} Developer</h2>
+          </div>
+    </lightning-card>
+
+</template>

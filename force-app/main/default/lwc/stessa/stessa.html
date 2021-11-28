@@ -1,0 +1,27 @@
+<template>
+<lightning-button variant="brand" label="New" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+<lightning-card title="Create Property Record" >
+    <div class="slds-p-around_x-small">
+        <lightning-input label="Name" type="string" value={record.Name} onchange={handleNameChange}></lightning-input>
+                <lightning-input label="Date" type="date" value={record.Date} onchange={handleDateChange}></lightning-input>
+                <lightning-input type="currency" label="Amount" value={record.Amount} onchange={handleAmountChange}></lightning-input>
+               <!-- <lightning-input type="Category" type="" label="Category" value={record.Category} onchange={handleCategoryChange}></lightning-input>-->
+               <lightning-combobox label="Category" 
+                                        name="category" 
+                                        onchange={handleCategoryChange} 
+                                        options={controllingValues} 
+                                        placeholder="Please Select Category" 
+                                        value={selectedCategory}></lightning-combobox><br/>
+                
+                    <lightning-combobox label="Dependent" 
+                                        name="dependent"
+                                        onchange={handleDependentChange} 
+                                        options={dependentValues} 
+                                        placeholder="--None--" 
+                                        value={selectedType}
+                                        disabled={isEmpty}></lightning-combobox><br/>         
+                <lightning-input type="Notes" label="Notes" value={record.Notes} onchange={handleNotesChange}></lightning-input><br/>
+                <lightning-button label="Save" onclick={handleClick}></lightning-button>
+    </div>
+</lightning-card>
+</template>

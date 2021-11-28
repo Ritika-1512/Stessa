@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Parenet Component">
+        <div class="slds-var-m-around_medium">
+            <h1>Hello this is info</h1>
+            <template for:each={users} for:item="user">
+                <div class="user-name" key={user}>{user}</div>
+            </template>
+            <lightning-button label="New" onclick={clickHandler} slot="actions"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

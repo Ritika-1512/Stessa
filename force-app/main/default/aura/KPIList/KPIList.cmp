@@ -1,0 +1,136 @@
+<!--massUpdateAttendeeStatus-->
+<aura:component access="global" controller="MassUpdateAttendeeStatusController" implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,force:hasSObjectName">
+    <!--style to incraee width-->
+    <aura:html tag="style">
+        .slds-modal__container{
+        max-width: 80rem !important;
+        width:80% !important;
+        }
+        td label {
+        display: none !important;
+        }
+        .my-card {
+        display: block;
+        }
+    </aura:html>
+    <!--Declare Handler-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <!--Declare Attributes-->
+    <aura:attribute name="wrapperList" type="Account[]"/>
+    <aura:attribute name="accList" type="wrapper[]"/>
+    <aura:attribute name="isVisible" type="Boolean" default="false" />
+    <aura:attribute name="status" type="String" default="open"/>
+    <aura:handler name="change" value="{!v.status}" action="{!c.handleChange}"/>
+    <!--Component Start-->
+    <div class="slds-m-around--xxx-large">               
+        <lightning:card class="my-card">
+            <aura:set attribute="title">
+                KPI List
+            </aura:set>
+            <aura:set attribute="footer">
+                <aura:if isTrue="{!v.isVisible}">
+                    <div class="slds-notify slds-notify_alert slds-alert_error slds-m-around_small" role="alert">
+                        <span class="slds-assistive-text">error</span>
+                        <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+                        </span>
+                        <h2>Please fill out all the fields.</h2>
+</div>
+                </aura:if>
+                <div class="slds-align_absolute-center"> 
+                    <div class="slds-p-right_xx-small">
+                        <lightning:button label="Save"
+                                          onclick="{!c.handleSave}"
+                                          variant="brand"
+                                          name="save"/>
+                    </div>
+                    <span >
+                        &nbsp;
+                    </span>
+                    <div class="slds-p-left_xx-small">
+                        <lightning:button label="Cancel"
+                                          onclick="{!c.handleCancel}"
+                                          name="cancel"/>
+                    </div>
+                </div>  
+            </aura:set>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_striped">
+                <thead>
+                    <tr class="slds-line-height_reset slds-text-title_caps">
+                        <th  class="slds-is-resizable slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Name">
+                                Name
+                            </div>
+                        </th>
+                        <th  class="slds-is-resizable" scope="col">
+                            <div class="slds-truncate" title="Account Number">
+                                Account Number
+                            </div>
+                        </th>
+                        <th  class="slds-is-resizable" scope="col">
+                            <div class="slds-truncate" title="Account Number">
+                                Some Input
+                            </div>
+                        </th>
+                        <th class="slds-is-resizable" scope="col">
+                            <div class="slds-truncate" title="Industry">
+                                Industry
+                            </div>
+                        </th>
+                        <th class="slds-is-resizable" scope="col">
+                            <div class="slds-truncate" title="Phone">
+                                Phone
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Actions">Actions</div>
+                        </th>
+                    </tr>
+                </thead>
+                <aura:if isTrue="{!v.accList.length > 0}">
+                    <tbody>
+                        <aura:iteration items="{!v.accList}" var="acc">
+                            <tr class="slds-hint-parent">
+                                <th class="slds-cell-wrap" data-label="Name" scope="row">
+                                    <div class="slds-line-clamp" title="{!acc.kpi}">
+                                        {!acc.kpi}
+                                    </div>
+                                </th>
+                                <td data-label="Account Number">
+                                    <div class="slds-truncate" title="{!acc.Service_Category_Weightning_score__c}">{!acc.ServiceCategoryWeightningScore}</div>
+                                </td>
+                                <td data-label="Some Input">
+                                    <ui:inputText class="slds-truncate slds-input" change="{!c.textChange}" value="{!acc.someInput}" label="" required="true"/>
+                                </td>
+                                <td data-label="Industry" class="Industry">
+                                    <lightning:select aura:id="select" name="select" required="true" value="{!acc.picklist1}" onchange="{!c.onIndustrychange}">
+                                        <option value="">choose one...</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </lightning:select>
+                                </td>
+                                <td data-label="Phone">
+                                    <lightning:select aura:id="select" name="select2" required="true" value="{!acc.picklist2}">
+                                        <option value="">choose one...</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                    </lightning:select>
+                                </td>
+                                <td data-label="Action">
+                                    <ui:inputCheckbox aura:id="checkbox" value="{!acc.check}"  change="{!c.onCheck}" />
+                                </td>
+                                
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </aura:if>
+            </table>
+            <aura:if isTrue="{!empty(v.accList)}">
+                <div class="slds-align_absolute-center">
+                    No records found
+                </div>
+            </aura:if>
+        </lightning:card>
+    </div>
+    <!--Component End-->
+</aura:component>

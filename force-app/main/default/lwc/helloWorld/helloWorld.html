@@ -1,0 +1,13 @@
+<template>
+    <lightning-card  title="variable Binding">
+        <div class="slds-var-m-around_medium">
+            <p>{str}</p>
+        </div>
+    </lightning-card>
+    <lightning-card  title="2 way variable Binding">
+        <lightning-input type="text" label="Add" onkeyup={changeHandler}></lightning-input>
+        <p class="slds-p-horizontal_small">my base location is - {obj.city}</p>
+        <p class="slds-p-horizontal_small">Today's hero is - {username}</p>
+        <p>{multiply}</p>
+    </lightning-card>
+</template>

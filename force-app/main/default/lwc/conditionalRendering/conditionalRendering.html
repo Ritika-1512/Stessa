@@ -1,0 +1,32 @@
+<template>
+    <lightning-card  title="Conditional Rendering">
+        <template if:true={isVisiable}>
+            <p class="slds-p-horizontal_small">Hello! I am here.</p>
+        </template>
+    </lightning-card>
+    <lightning-card  title="Conditional Rendering-2">
+        <lightning-input type="text" name="Enter-Hello" label="Enter Hello" onkeyup={changehandler}></lightning-input>
+        <template if:true={isHello}>
+            <p class="slds-p-horizontal_small">Hello! I am visible</p>
+        </template>
+    </lightning-card>
+    <lightning-card  title="Template loop">
+        <template for:each={users} for:item="user">
+            <p key={user} class="slds-p-horizontal_small">{user}</p>
+        </template>
+    </lightning-card>
+    <lightning-card  title="Iterator">
+        <template iterator:infos={info}>
+            <ul key={infos.value.id} class="slds-list_dotted">
+                <template if:true={infos.first}>
+                    This is start of list
+                </template>
+                <li><strong>{infos.value.name}</strong></li>
+                <li>{infos.value.Role}</li>
+                <template if:true={infos.last}>
+                    This is end of list
+                </template>
+            </ul>            
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,28 @@
+<template>
+    <lightning-card  title="CALCULATOR" icon-name="calculated_insights ">
+        <div class="slds-p-horizontal_small">
+            <lightning-input label="Enter First Number" name="num1" value={fValue} onchange={handleChange1}></lightning-input>
+            <lightning-input label="Enter Second Number" name="num2" value={sNumber} onchange={handleChange2}></lightning-input>
+        </div>
+    </lightning-card>
+    <lightning-card>
+            <lightning-button label="Sum" onclick={sumExp}></lightning-button>
+            <lightning-button label="Sub" onclick={subExp}></lightning-button>
+            <lightning-button label="Mul" onclick={mulExp}></lightning-button>
+            <lightning-button label="Div" onclick={divExp}></lightning-button>
+            
+            <lightning-input label="Result" read-only="True" name="result" value={result}></lightning-input>
+            <lightning-input type="checkbox" label="Show Previous Value" onchange={showPreValues}></lightning-input>
+            <template if:true={showPreResult}>
+                <ul>
+                    <template iterator:result={previousResult}>
+                        <li key={result.value}>
+                            <div if:true={result.first}></div>
+                            <lightning-formatted-text value={result.value}></lightning-formatted-text>
+                            <div if:true={result.last}></div>
+                        </li>
+                    </template>
+</ul>
+</template>
+</lightning-card>
+</template>

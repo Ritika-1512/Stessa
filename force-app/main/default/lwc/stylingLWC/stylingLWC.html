@@ -1,0 +1,24 @@
+<template>
+    <lightning-card  title="InLine CSS">
+        <p style="color:green;font-size:25px;">Hello this is innline css</p>
+    </lightning-card>
+    <lightning-card  title="external CSS">
+        <div class="external">Hi this is external Css</div>
+    </lightning-card>
+    <lightning-card  title="SLDS">
+        <div class="slds-box slds-box_small">
+            <p>This is a small box.</p>
+        </div>
+    </lightning-card>
+    <lightning-card  title="shared CSS">
+        <div class="slds-box slds-box_small">
+            <p class="shared">This is coming from shared CSS.</p>
+        </div>
+    </lightning-card>
+    <lightning-card  title="Dynamic CSS">
+        <lightning-input type="number" onkeyup={onchnagehandler}></lightning-input>
+        <div class="slds-box slds-box_small dynamic" style={percentage}>
+            <p>This CSS is changing dynamically.</p>
+        </div>
+    </lightning-card>
+</template>

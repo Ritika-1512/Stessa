@@ -1,0 +1,9 @@
+@import 'c/sharedCss';
+div.external{
+    color:cyan;
+    padding : 10px;
+    background-color:grey
+}
+.dynamic{
+    background-color: red;
+}
